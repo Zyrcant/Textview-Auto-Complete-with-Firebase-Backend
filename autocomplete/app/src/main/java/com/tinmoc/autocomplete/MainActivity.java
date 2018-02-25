@@ -16,7 +16,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 public class MainActivity extends AppCompatActivity {
-    String[] interests = {"League of Legends", "Legos", "Video games", "video editing", "vim", "Legend of zelda"};
     private DatabaseReference database;
     String suggestion;
 
@@ -56,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
     //button press
     protected void aah(View view) {
         AutoCompleteTextView ACTV = (AutoCompleteTextView)findViewById(R.id.autoCompleteTextView);
-        final String interestVal = ACTV.getText().toString().trim();
+        final String interestVal = ACTV.getText().toString().toLowerCase().trim();
         if(!TextUtils.isEmpty(interestVal))
         {
             database.child(interestVal).child("Interest").setValue(interestVal);
